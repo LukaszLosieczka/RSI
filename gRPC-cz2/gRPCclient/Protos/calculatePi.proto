@@ -1,0 +1,17 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "gRPCclient";
+
+package calculatePi;
+
+service CalculatePi {
+  rpc Calculate (CalculatePiRequest) returns (CalculatePiResponse);
+}
+
+message CalculatePiRequest {
+  int32 digits = 2;
+}
+
+message CalculatePiResponse {
+  string result = 1;
+}
