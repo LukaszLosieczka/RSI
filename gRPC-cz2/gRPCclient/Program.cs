@@ -53,8 +53,11 @@ namespace gRPCclient
             var client = new CalculatePi.CalculatePiClient(channel);
             Console.WriteLine("Enter number of digits :     ");
             int val = int.Parse(Console.ReadLine());
-            var reply = await client.CalculateAsync(new CalculatePiRequest {Digits=val });
+            Console.WriteLine("Enter your number :     ");
+            double number = double.Parse(Console.ReadLine());
+            var reply = await client.CalculateAsync(new CalculatePiRequest {Digits=val, Number=number });
             Console.WriteLine("From Server: " + reply.Result);
+            Console.WriteLine("From Server is your number greater than PI: " + reply.IsGreater);
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
             channel.ShutdownAsync().Wait();

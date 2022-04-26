@@ -9,9 +9,11 @@ service CalculatePi {
 }
 
 message CalculatePiRequest {
-  int32 digits = 2;
+  int32 digits = 1;
+  double number = 2;
 }
 
 message CalculatePiResponse {
   string result = 1;
+  bool isGreater = 3;
 }

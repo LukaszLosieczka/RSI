@@ -20,6 +20,7 @@ namespace gRPCserver
         {
             string finalResult;
             int digits = request.Digits;
+            double number = request.Number;
 
             if (digits < 0)
                 finalResult = "0";
@@ -28,8 +29,9 @@ namespace gRPCserver
 
             return Task.FromResult(new CalculatePiResponse
             {
-                Result = finalResult
-            }) ;
+                Result = finalResult,
+                IsGreater = number > Math.PI
+            });
         }
 
         private static string GetPi(int digits)
